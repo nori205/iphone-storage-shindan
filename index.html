@@ -615,7 +615,8 @@ function getResultKey() {
   const a = answers;
   if (a.storage === 'low') return 'danger';
   if (a.paying === 1500) return 'need_2tb';
-  if (a.photo === 'dontcare' && (a.storage === 'plenty' || a.storage === 'medium')) return 'unnecessary';
+  if (a.photo === 'dontcare' && (a.storage === 'plenty' || a.storage === 'medium') && a.paying > 0) return 'unnecessary';
+  if (a.photo === 'dontcare' && a.paying <= 0) return 'delete_photos';
   if (a.pc === 'yes' && a.photo !== 'precious') return 'pc_backup';
   if (a.years === 1) return 'short_term';
   if (a.photo === 'precious' && a.pc === 'no') return 'need_icloud';
@@ -716,6 +717,19 @@ function showResult() {
       desc: '本体の空きがほぼない状態は危険。このままだと課金してもアップロードできない可能性がある。まず少し空きを作ってから動いて。',
       actions: ['まず使ってないアプリを削除して空きを確保', 'iCloudに課金してiCloud写真をオンにする', 'WiFi＋充電でくるくるが消えるのを待つ'],
       warning: '⚠️ 本体の空きが1〜2GBを切ると作業スペースがなくなってアップロードが止まる。まず空きを作ってから！'
+    },
+    delete_photos: {
+      emoji: '🗑️',
+      type: 'すっきり整理タイプ',
+      title: '消えてもいいなら\n消しちゃえばいい。',
+      desc: '写真や動画に未練がないなら、iCloudに課金する必要はゼロ。定期的に不要な写真・動画を削除するだけでストレージ問題は解決できる。シンプルにいこう。',
+      actions: [
+        '不要な写真・動画を定期的に削除する',
+        '写真アプリ → 最近削除した項目 → すべて削除 も忘れずに（削除後30日残り続ける）',
+        '設定 → App Store → 非使用のAppを取り除く をONにすると自動で整理してくれる',
+        'iCloud課金は不要。無料の5GBで十分。',
+      ],
+      warning: null
     },
     unnecessary: {
       emoji: '😲',
@@ -818,6 +832,7 @@ function showResult() {
   }
 
   const warningHTML = r.warning ? `<div class="warning-box"><strong>注意</strong>${r.warning}</div>` : '';
+  const showCalc = ['short_term', 'need_icloud', 'consider', 'need_2tb'].includes(key);
 
   area.innerHTML = `
     <div class="result-hero">
@@ -826,7 +841,7 @@ function showResult() {
       <div class="result-title">${r.title}</div>
       <div class="result-desc">${r.desc}</div>
     </div>
-    ${buildCalcBox()}
+    ${showCalc ? buildCalcBox() : ''}
     ${warningHTML}
     <div class="result-section">
       <h3>やること</h3>

@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>iPhoneストレージ診断 | のりこ式</title>
+<title>iPhoneストレージ診断 | のり式</title>
 <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;700;900&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -28,7 +28,6 @@
     overflow-x: hidden;
   }
 
-  /* bg grain */
   body::before {
     content: '';
     position: fixed;
@@ -46,7 +45,6 @@
     padding: 40px 20px 80px;
   }
 
-  /* header */
   .header {
     text-align: center;
     margin-bottom: 48px;
@@ -73,9 +71,7 @@
     margin-bottom: 12px;
   }
 
-  .header h1 span {
-    color: var(--accent);
-  }
+  .header h1 span { color: var(--accent); }
 
   .header p {
     font-size: 14px;
@@ -83,14 +79,12 @@
     line-height: 1.7;
   }
 
-  /* progress */
   .progress-bar {
     height: 3px;
     background: var(--surface2);
     border-radius: 100px;
-    margin-bottom: 40px;
+    margin-bottom: 12px;
     overflow: hidden;
-    animation: fadeUp 0.6s 0.1s ease both;
   }
 
   .progress-fill {
@@ -105,11 +99,9 @@
     font-size: 11px;
     color: var(--text-muted);
     text-align: right;
-    margin-top: 6px;
-    margin-bottom: 32px;
+    margin-bottom: 28px;
   }
 
-  /* question card */
   .question-card {
     background: var(--surface);
     border: 1px solid var(--border);
@@ -141,7 +133,6 @@
     margin-bottom: 28px;
   }
 
-  /* choices */
   .choices {
     display: flex;
     flex-direction: column;
@@ -166,12 +157,7 @@
     gap: 12px;
   }
 
-  .choice-btn .choice-icon {
-    font-size: 20px;
-    flex-shrink: 0;
-  }
-
-  .choice-btn .choice-body {}
+  .choice-btn .choice-icon { font-size: 20px; flex-shrink: 0; }
   .choice-btn .choice-label { display: block; }
   .choice-btn .choice-note {
     display: block;
@@ -187,23 +173,15 @@
     transform: translateX(4px);
   }
 
-  .choice-btn.selected {
-    border-color: var(--accent);
-    background: #f5ece0;
-  }
-
-  /* result */
-  .result-card {
-    animation: fadeUp 0.6s ease both;
-  }
+  .result-card { animation: fadeUp 0.6s ease both; }
 
   .result-hero {
     background: linear-gradient(135deg, #fff4eb 0%, #f5e6d5 100%);
     border: 1px solid var(--accent);
     border-radius: var(--radius);
-    padding: 40px 32px;
+    padding: 36px 28px;
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 16px;
     position: relative;
     overflow: hidden;
   }
@@ -211,17 +189,15 @@
   .result-hero::before {
     content: '';
     position: absolute;
-    top: -60px;
-    right: -60px;
-    width: 200px;
-    height: 200px;
+    top: -60px; right: -60px;
+    width: 200px; height: 200px;
     background: radial-gradient(circle, rgba(176,125,91,0.12) 0%, transparent 70%);
     pointer-events: none;
   }
 
   .result-emoji {
-    font-size: 56px;
-    margin-bottom: 16px;
+    font-size: 52px;
+    margin-bottom: 12px;
     display: block;
     animation: bounce 0.6s 0.3s ease both;
   }
@@ -232,14 +208,15 @@
     color: var(--accent);
     letter-spacing: 0.15em;
     text-transform: uppercase;
-    margin-bottom: 12px;
+    margin-bottom: 10px;
   }
 
   .result-title {
-    font-size: 26px;
+    font-size: 24px;
     font-weight: 900;
     line-height: 1.3;
-    margin-bottom: 16px;
+    margin-bottom: 14px;
+    white-space: pre-line;
   }
 
   .result-desc {
@@ -247,6 +224,58 @@
     color: #5a4035;
     line-height: 1.8;
     text-align: left;
+  }
+
+  .calc-box {
+    background: var(--surface);
+    border: 2px solid var(--accent);
+    border-radius: var(--radius);
+    padding: 24px;
+    margin-bottom: 16px;
+  }
+
+  .calc-box h3 {
+    font-size: 14px;
+    font-weight: 900;
+    color: var(--accent);
+    margin-bottom: 16px;
+  }
+
+  .calc-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 13px;
+    gap: 12px;
+  }
+
+  .calc-row:last-child { border-bottom: none; }
+  .calc-row .label { color: var(--text-muted); flex: 1; line-height: 1.5; }
+  .calc-row .value { font-weight: 900; white-space: nowrap; }
+  .calc-row .value.green { color: #3a7a4a; }
+  .calc-row .value.red { color: #c62828; }
+  .calc-row .value.neutral { color: var(--text); }
+
+  .verdict-box {
+    background: #f5e6d5;
+    border-radius: 10px;
+    padding: 16px;
+    margin-top: 14px;
+    font-size: 14px;
+    line-height: 1.7;
+    color: #5a3e2b;
+  }
+
+  .verdict-box .verdict-label {
+    font-size: 11px;
+    font-family: 'DM Mono', monospace;
+    color: var(--accent);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 8px;
   }
 
   .result-section {
@@ -260,7 +289,7 @@
   .result-section h3 {
     font-size: 13px;
     font-weight: 700;
-    color: #6b4e2a;
+    color: var(--accent2);
     margin-bottom: 14px;
     font-family: 'DM Mono', monospace;
     letter-spacing: 0.08em;
@@ -303,7 +332,6 @@
 
   .warning-box strong { display: block; margin-bottom: 4px; font-size: 14px; }
 
-  /* retry */
   .retry-btn {
     width: 100%;
     background: transparent;
@@ -319,18 +347,7 @@
     margin-top: 8px;
   }
 
-  .retry-btn:hover {
-    border-color: var(--text-muted);
-    color: var(--text);
-  }
-
-  .noriko-sign {
-    text-align: center;
-    font-size: 12px;
-    color: var(--text-muted);
-    margin-top: 40px;
-    font-family: 'DM Mono', monospace;
-  }
+  .retry-btn:hover { border-color: var(--text-muted); color: var(--text); }
 
   .consult-section {
     margin-top: 48px;
@@ -372,7 +389,7 @@
     border-radius: 14px;
     padding: 20px;
     color: #fff;
-    font-family: "Zen Kaku Gothic New", sans-serif;
+    font-family: 'Zen Kaku Gothic New', sans-serif;
     font-size: 16px;
     font-weight: 900;
     text-align: center;
@@ -395,7 +412,16 @@
     margin-top: 4px;
   }
 
-  /* animations */
+  .noriko-sign {
+    text-align: center;
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-top: 32px;
+    font-family: 'DM Mono', monospace;
+  }
+
+  .hidden { display: none !important; }
+
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(20px); }
     to   { opacity: 1; transform: translateY(0); }
@@ -404,10 +430,8 @@
   @keyframes bounce {
     0%   { transform: scale(0.5); opacity: 0; }
     70%  { transform: scale(1.1); }
-    100% { transform: scale(1);   opacity: 1; }
+    100% { transform: scale(1); opacity: 1; }
   }
-
-  .hidden { display: none !important; }
 </style>
 </head>
 <body>
@@ -416,15 +440,14 @@
   <div class="header">
     <div class="tag">のり式 診断ツール</div>
     <h1>あなたにぴったりの<br><span>iPhoneストレージ</span>、わかる。</h1>
-    <p>5問答えるだけ。<br>無駄な課金、してない？正直に教えるね。</p>
+    <p>7問答えるだけ。<br>あなたの場合の費用計算も出します。</p>
   </div>
 
-  <!-- Quiz -->
   <div id="quiz-area">
     <div class="progress-bar">
       <div class="progress-fill" id="progress-fill" style="width: 0%"></div>
     </div>
-    <div class="progress-label" id="progress-label">0 / 5</div>
+    <div class="progress-label" id="progress-label">0 / 7</div>
 
     <div class="question-card" id="question-card">
       <div class="question-num" id="q-num">Q1</div>
@@ -434,7 +457,6 @@
     </div>
   </div>
 
-  <!-- Result -->
   <div id="result-area" class="hidden result-card"></div>
 
   <div class="consult-section">
@@ -447,178 +469,120 @@
     </a>
   </div>
 
-  <div class="noriko-sign" style="margin-top:32px;">スマホのりかえ相談屋　のり</div>
+  <div class="noriko-sign">スマホのりかえ相談屋　のり</div>
 </div>
 
 <script>
 const questions = [
   {
-    text: "iPhoneの本体ストレージ、今どのくらい空いてる？",
-    sub: "設定 → 一般 → iPhoneストレージ で確認できるよ",
+    key: 'storage',
+    text: 'iPhoneの本体ストレージ、今どのくらい空いてる？',
+    sub: '設定 → 一般 → iPhoneストレージ で確認できるよ',
     choices: [
-      { icon: "😎", label: "20GB以上余ってる", note: "余裕あり", val: "plenty" },
-      { icon: "😅", label: "5〜20GB くらい", note: "まあまあ", val: "medium" },
-      { icon: "😱", label: "5GB以下でギリギリ", note: "やばい", val: "low" },
-      { icon: "🤷", label: "よくわからない", note: "確認してない", val: "unknown" },
+      { icon: '😎', label: '20GB以上余ってる', note: '余裕あり', val: 'plenty' },
+      { icon: '😅', label: '5〜20GB くらい', note: 'まあまあ', val: 'medium' },
+      { icon: '😱', label: '5GB以下でギリギリ', note: 'やばい', val: 'low' },
+      { icon: '🤷', label: 'よくわからない', note: '確認してない', val: 'unknown' },
     ]
   },
   {
-    text: "写真や動画って、大切にしてる？",
-    sub: "消えたらショック？正直に答えてね",
+    key: 'iphone_gb',
+    text: '今使ってるiPhoneの容量は？',
+    sub: '設定 → 一般 → 情報 で確認できるよ',
     choices: [
-      { icon: "😍", label: "絶対消えてほしくない！", note: "思い出は全部残したい", val: "precious" },
-      { icon: "🙂", label: "まあ大切かな", note: "消えたらちょっと悲しい", val: "moderate" },
-      { icon: "😶", label: "正直、どーでもいい", note: "消えても仕方ない", val: "dontcare" },
+      { icon: '📱', label: '64GB', note: '旧モデルに多い', val: 64 },
+      { icon: '📱', label: '128GB', note: '一番多いサイズ', val: 128 },
+      { icon: '📱', label: '256GB', note: 'ちょっと大きめ', val: 256 },
+      { icon: '📱', label: '512GB以上', note: '大容量モデル', val: 512 },
     ]
   },
   {
-    text: "パソコン、持ってる？",
-    sub: "MacでもWindowsでもOK",
+    key: 'photo',
+    text: '写真や動画って、大切にしてる？',
+    sub: '消えたらショック？正直に答えてね',
     choices: [
-      { icon: "💻", label: "持ってる", note: "ケーブルつないでバックアップできる", val: "yes" },
-      { icon: "📱", label: "持ってない", note: "スマホだけで生活してる", val: "no" },
+      { icon: '😍', label: '絶対消えてほしくない！', note: '思い出は全部残したい', val: 'precious' },
+      { icon: '🙂', label: 'まあ大切かな', note: '消えたらちょっと悲しい', val: 'moderate' },
+      { icon: '😶', label: '正直、どーでもいい', note: '消えても仕方ない', val: 'dontcare' },
     ]
   },
   {
-    text: "今後1〜2年で機種変する予定ある？",
-    sub: "iPhoneの買い替えのこと",
+    key: 'pc',
+    text: 'パソコン、持ってる？',
+    sub: 'MacでもWindowsでもOK',
     choices: [
-      { icon: "🔜", label: "ある、もうすぐ変える", note: "1年以内くらい", val: "soon" },
-      { icon: "🤔", label: "たぶんある、いつかは", note: "2〜3年くらい先かな", val: "maybe" },
-      { icon: "😌", label: "当分しない", note: "まだ使い続ける", val: "nope" },
+      { icon: '💻', label: '持ってる', note: 'ケーブルつないでバックアップできる', val: 'yes' },
+      { icon: '📱', label: '持ってない', note: 'スマホだけで生活してる', val: 'no' },
     ]
   },
   {
-    text: "今、iCloudに課金してる？",
-    sub: "毎月150円とか450円とか引き落とされてたら課金してる",
+    key: 'years',
+    text: '今のiPhoneをあと何年使う予定？',
+    sub: '買い替えのタイミングを教えてね',
     choices: [
-      { icon: "💳", label: "してる", note: "毎月引き落とされてる", val: "paying" },
-      { icon: "🆓", label: "してない（無料の5GB）", note: "課金なし", val: "free" },
-      { icon: "🤷", label: "よくわからない", note: "確認してない", val: "unknown" },
+      { icon: '🔜', label: '1年以内に買い替えたい', note: 'もうすぐ変える', val: 1 },
+      { icon: '📅', label: '2〜3年は使いたい', note: 'まだしばらく使う', val: 2.5 },
+      { icon: '😌', label: '3年以上使いたい', note: 'できるだけ長く', val: 4 },
+      { icon: '🤷', label: 'まだわからない', note: '決めてない', val: 2 },
+    ]
+  },
+  {
+    key: 'paying',
+    text: '今、iCloudに課金してる？',
+    sub: '設定 → Apple ID → iCloud → ストレージを管理 で確認できるよ',
+    choices: [
+      { icon: '💳', label: 'してる（50GB・月150円）', note: '月150円', val: 150 },
+      { icon: '💳', label: 'してる（200GB・月450円）', note: '月450円', val: 450 },
+      { icon: '💳', label: 'してる（2TB・月1,500円）', note: '月1,500円', val: 1500 },
+      { icon: '🆓', label: 'してない（無料の5GB）', note: '課金なし', val: 0 },
+      { icon: '🤷', label: 'よくわからない', note: '確認してない', val: -1 },
+    ]
+  },
+  {
+    key: 'storage_content',
+    condition: a => a.paying === 1500,
+    text: '2TBも使ってるのは、主に何？',
+    sub: '一番多そうなものを選んでね',
+    choices: [
+      { icon: '📸', label: '写真・動画', note: '思い出の記録がメイン', val: 'photos' },
+      { icon: '📱', label: '複数デバイスのバックアップ', note: '古いiPhoneのデータも残してる', val: 'backup' },
+      { icon: '📁', label: '書類・ファイル類', note: 'PDFや資料など', val: 'files' },
+      { icon: '🤷', label: 'よくわからない', note: '確認したことがない', val: 'unknown' },
+    ]
+  },
+  {
+    key: 'kiki',
+    text: '機種変するとしたら、何GBに上げたい？',
+    sub: '次に買うiPhoneのイメージを教えてね',
+    choices: [
+      { icon: '📦', label: '128GB（今と同じくらい）', note: '目安：約11〜13万円台', val: { gb: 128, price: 115000 } },
+      { icon: '📦', label: '256GBに上げたい', note: '目安：約14〜18万円台', val: { gb: 256, price: 145000 } },
+      { icon: '📦', label: '512GBに上げたい', note: '目安：約20〜22万円台', val: { gb: 512, price: 205000 } },
+      { icon: '🤷', label: 'まだ決めてない', note: '256GBで計算します', val: { gb: 256, price: 145000 } },
     ]
   },
 ];
 
-const results = {
-  unnecessary_paying: {
-    emoji: "😲",
-    type: "もったいないタイプ",
-    title: "課金、やめていいかもしれない。",
-    desc: "本体に余裕があって、写真もそこまで大切じゃないなら、iCloudへの課金は不要な可能性が高い。Appleの警告画面に流されて、なんとなく課金してない？まず設定を見直してみて。",
-    actions: [
-      "設定 → 写真 → iCloud写真をオフにする",
-      "解約前に「オリジナルをダウンロード」で本体に写真を戻す",
-      "くるくるが消えたら解約してOK",
-    ],
-    warning: null
-  },
-  need_icloud: {
-    emoji: "☁️",
-    type: "iCloud必要タイプ",
-    title: "課金は正解。設定を確認して。",
-    desc: "写真を大切にしてて、パソコンもない。iCloudへの課金はあなたにとって正しい選択。ただし設定が正しくできてないと意味がない。今すぐ確認してみて。",
-    actions: [
-      "設定 → 写真 → iCloud写真がオンになってるか確認",
-      "設定 → 写真 → iPhoneストレージを最適化もオンに",
-      "WiFiにつないで充電しながら、くるくるが消えるのを待つ",
-      "本体の空きが5GB以下になる前に課金すること！",
-    ],
-    warning: "⚠️ 本体がカツカツになりすぎると課金してもアップロードできなくなる。空きが5GB以下になったらすぐ動いて。"
-  },
-  pc_backup: {
-    emoji: "💻",
-    type: "パソコン活用タイプ",
-    title: "iCloudいらない。パソコンで十分。",
-    desc: "パソコンがあるなら、わざわざiCloudに課金しなくていい。ケーブルでつないでバックアップすれば、写真も設定も全部守れる。機種変のときもパソコン経由でOK。",
-    actions: [
-      "Macなら「Finder」、WindowsならiTunesでバックアップ",
-      "iCloud写真はオフでOK",
-      "機種変のときはパソコンでバックアップ → 新iPhoneに復元",
-    ],
-    warning: null
-  },
-  kiki_only: {
-    emoji: "🎯",
-    type: "機種変のときだけタイプ",
-    title: "機種変前だけ課金する、が正解。",
-    desc: "普段は無料の5GBで十分。機種変の1〜2ヶ月前だけ課金して、写真を全部クラウドに上げてから移行するのが一番賢い使い方。終わったら忘れずに解約してね。",
-    actions: [
-      "機種変の1〜2ヶ月前に課金開始",
-      "iCloud写真をオンにしてWiFiでアップロード",
-      "くるくるが消えたら機種変してOK",
-      "移行後は忘れずに解約！",
-    ],
-    warning: "⚠️ 解約のし忘れに注意。課金しっぱなしになってる人、めちゃくちゃ多い(ﾉ_ _)ﾉ"
-  },
-  danger_zone: {
-    emoji: "🚨",
-    type: "今すぐ動いてタイプ",
-    title: "急いで！本体がやばい状態。",
-    desc: "本体の空きがほぼない状態は危険。このままだと写真の追加もできないし、課金してもアップロードできない可能性がある。今すぐ対処して。",
-    actions: [
-      "まず設定 → 一般 → iPhoneストレージで状況を確認",
-      "使ってないアプリを削除して少し空きを作る",
-      "iCloudに課金してiCloud写真をオンにする",
-      "WiFi＋充電でくるくるが消えるのを待つ",
-    ],
-    warning: "⚠️ 本体の空きが1〜2GBを切ると、アップロードの作業スペースがなくなって処理が止まる。まず少し空きを作ってから課金してみて。"
-  },
-};
-
-let answers = [];
+let answers = {};
 let current = 0;
 
-function getResult(ans) {
-  const storage = ans[0];
-  const photo = ans[1];
-  const pc = ans[2];
-  const kiki = ans[3];
-  const paying = ans[4];
-
-  // 本体がやばい
-  if (storage === 'low' || storage === 'unknown' && paying === 'free') {
-    if (photo === 'precious') return 'danger_zone';
-  }
-  if (storage === 'low') return 'danger_zone';
-
-  // パソコンあり＋写真大切じゃない
-  if (pc === 'yes' && photo !== 'precious') return 'pc_backup';
-
-  // 写真どうでもいい＋本体余裕あり
-  if (photo === 'dontcare' && (storage === 'plenty' || storage === 'medium')) {
-    return 'unnecessary_paying';
-  }
-
-  // 機種変予定あり＋写真moderate以下＋PC持ち
-  if (kiki === 'soon' && pc === 'yes') return 'kiki_only';
-
-  // 写真大切＋PCなし
-  if (photo === 'precious' && pc === 'no') return 'need_icloud';
-
-  // 写真大切＋PCあり
-  if (photo === 'precious' && pc === 'yes') return 'kiki_only';
-
-  // 課金してるのに余裕あり＋写真どーでもいい
-  if (paying === 'paying' && storage === 'plenty' && photo !== 'precious') {
-    return 'unnecessary_paying';
-  }
-
-  return 'need_icloud';
+function getActiveQuestions() {
+  return questions.filter(q => !q.condition || q.condition(answers));
 }
 
 function renderQuestion() {
-  const q = questions[current];
-  const pct = (current / questions.length) * 100;
-
+  const active = getActiveQuestions();
+  const q = active[current];
+  const total = active.length;
+  const pct = (current / total) * 100;
   document.getElementById('progress-fill').style.width = pct + '%';
-  document.getElementById('progress-label').textContent = `${current} / ${questions.length}`;
+  document.getElementById('progress-label').textContent = `${current} / ${total}`;
   document.getElementById('q-num').textContent = `Q${current + 1}`;
   document.getElementById('q-text').textContent = q.text;
   document.getElementById('q-sub').textContent = q.sub;
 
   const choicesEl = document.getElementById('choices');
   choicesEl.innerHTML = '';
-
   q.choices.forEach(c => {
     const btn = document.createElement('button');
     btn.className = 'choice-btn';
@@ -627,13 +591,12 @@ function renderQuestion() {
       <span class="choice-body">
         <span class="choice-label">${c.label}</span>
         <span class="choice-note">${c.note}</span>
-      </span>
-    `;
+      </span>`;
     btn.addEventListener('click', () => {
-      answers.push(c.val);
+      answers[q.key] = c.val;
       current++;
-      if (current < questions.length) {
-        // re-animate
+      const newActive = getActiveQuestions();
+      if (current < newActive.length) {
         const card = document.getElementById('question-card');
         card.style.animation = 'none';
         card.offsetHeight;
@@ -647,16 +610,213 @@ function renderQuestion() {
   });
 }
 
+function getResultKey() {
+  const a = answers;
+  if (a.storage === 'low') return 'danger';
+  if (a.paying === 1500) return 'need_2tb';
+  if (a.photo === 'dontcare' && (a.storage === 'plenty' || a.storage === 'medium')) return 'unnecessary';
+  if (a.pc === 'yes' && a.photo !== 'precious') return 'pc_backup';
+  if (a.years === 1) return 'short_term';
+  if (a.photo === 'precious' && a.pc === 'no') return 'need_icloud';
+  return 'consider';
+}
+
+function buildCalcBox() {
+  const a = answers;
+  const years = typeof a.years === 'number' ? a.years : 2;
+  const months = Math.round(years * 12);
+  const kikaiPrice = a.kiki && a.kiki.price ? a.kiki.price : 145000;
+  const kikaiGB = a.kiki && a.kiki.gb ? a.kiki.gb : 256;
+
+  const yearsLabel = years === 1 ? '約1年（12ヶ月）'
+    : years === 2.5 ? '約2〜3年（30ヶ月）'
+    : years >= 4 ? '3年以上（48ヶ月）'
+    : '約2年（24ヶ月）';
+
+  // 2TBユーザー専用：本体容量アップ＋プランダウングレードの比較
+  if (a.paying === 1500) {
+    const currentTotal = 1500 * months;
+    const altIcloud = 450 * months;
+    const altTotal = kikaiPrice + altIcloud;
+    const annualSaving = (1500 - 450) * 12;
+    return `
+      <div class="calc-box">
+        <h3>💰 あなたの場合の計算</h3>
+        <div class="calc-row">
+          <span class="label">今後の使用予定</span>
+          <span class="value neutral">${yearsLabel}</span>
+        </div>
+        <div class="calc-row">
+          <span class="label">2TB継続コスト<br>（1,500円 × ${months}ヶ月）</span>
+          <span class="value red">約${currentTotal.toLocaleString()}円</span>
+        </div>
+        <div class="calc-row">
+          <span class="label">${kikaiGB}GB買い替え＋200GBプラン<br>（${kikaiPrice.toLocaleString()}円＋450円×${months}ヶ月）</span>
+          <span class="value neutral">約${altTotal.toLocaleString()}円</span>
+        </div>
+        <div class="calc-row">
+          <span class="label">データ整理で200GBに<br>落とせた場合の年間節約</span>
+          <span class="value green">約${annualSaving.toLocaleString()}円/年</span>
+        </div>
+        <div class="verdict-box">
+          <span class="verdict-label">のり式 判定</span>
+          <strong>📁 2TBは本体では代替できない。</strong><br>
+          iPhoneの最大容量は512GBなので、2TBのデータを本体に入れることは不可能。iCloudは継続前提。ただし不要な動画や重複写真を整理して200GBに落とせれば年間${annualSaving.toLocaleString()}円の節約になる。本体を${kikaiGB}GBに上げると操作が快適になるが、節約目的ではなく「快適さへの投資」として考えて。
+        </div>
+      </div>`;
+  }
+
+  const icloudMonthly = a.paying === 150 ? 150 : 450;
+  const icloudPlanLabel = a.paying === 150 ? '50GB' : '200GB';
+  const icloudTotal = icloudMonthly * months;
+  const icloudCheaper = icloudTotal < kikaiPrice;
+  const diff = Math.abs(icloudTotal - kikaiPrice).toLocaleString();
+
+  let verdictText = '';
+  if (icloudCheaper) {
+    verdictText = `<strong>✅ あなたの場合、iCloud課金がお得！</strong><br>買い替えより約${diff}円安くすみます。${years <= 1 ? '機種変まではiCloudで乗り切って。' : 'その間しっかり写真を守れる。'}`;
+  } else {
+    verdictText = `<strong>🔄 買い替えを検討してもいいタイミング。</strong><br>iCloudを${months}ヶ月払い続けるより、${kikaiGB}GBへの買い替えの方が約${diff}円の差。長く使うなら大容量モデルへの投資もアリ。`;
+  }
+
+  return `
+    <div class="calc-box">
+      <h3>💰 あなたの場合の計算</h3>
+      <div class="calc-row">
+        <span class="label">今後の使用予定</span>
+        <span class="value neutral">${yearsLabel}</span>
+      </div>
+      <div class="calc-row">
+        <span class="label">iCloud継続コスト<br>（${icloudPlanLabel} × ${months}ヶ月）</span>
+        <span class="value ${icloudCheaper ? 'green' : 'red'}">約${icloudTotal.toLocaleString()}円</span>
+      </div>
+      <div class="calc-row">
+        <span class="label">${kikaiGB}GBへの<br>買い替え目安</span>
+        <span class="value ${icloudCheaper ? 'red' : 'green'}">約${kikaiPrice.toLocaleString()}円〜</span>
+      </div>
+      <div class="verdict-box">
+        <span class="verdict-label">のり式 判定</span>
+        ${verdictText}
+      </div>
+    </div>`;
+}
+
 function showResult() {
   document.getElementById('quiz-area').classList.add('hidden');
-  const key = getResult(answers);
-  const r = results[key];
+  const key = getResultKey();
   const area = document.getElementById('result-area');
   area.classList.remove('hidden');
 
-  const warningHtml = r.warning
-    ? `<div class="warning-box"><strong>注意</strong>${r.warning}</div>`
-    : '';
+  const results = {
+    danger: {
+      emoji: '🚨',
+      type: '今すぐ動いてタイプ',
+      title: '急いで！\n本体がやばい状態。',
+      desc: '本体の空きがほぼない状態は危険。このままだと課金してもアップロードできない可能性がある。まず少し空きを作ってから動いて。',
+      actions: ['まず使ってないアプリを削除して空きを確保', 'iCloudに課金してiCloud写真をオンにする', 'WiFi＋充電でくるくるが消えるのを待つ'],
+      warning: '⚠️ 本体の空きが1〜2GBを切ると作業スペースがなくなってアップロードが止まる。まず空きを作ってから！'
+    },
+    unnecessary: {
+      emoji: '😲',
+      type: 'もったいないタイプ',
+      title: '課金、\nやめていいかもしれない。',
+      desc: '本体に余裕があって写真もそこまで大切じゃないなら、iCloudへの課金は不要な可能性が高い。Appleの警告画面に流されてない？',
+      actions: ['設定 → 写真 → iCloud写真をオフにする', '解約前に「オリジナルをダウンロード」で本体に写真を戻す', 'くるくるが消えたら解約OK'],
+      warning: null
+    },
+    pc_backup: {
+      emoji: '💻',
+      type: 'パソコン活用タイプ',
+      title: 'iCloudいらない。\nパソコンで十分。',
+      desc: 'パソコンがあるなら、iCloudに課金しなくていい。ケーブルでバックアップすれば写真も設定も全部守れる。',
+      actions: ['Macなら「Finder」、WindowsならiTunesでバックアップ', 'iCloud写真はオフでOK', '機種変のときはパソコンでバックアップ → 新iPhoneに復元'],
+      warning: null
+    },
+    short_term: {
+      emoji: '🎯',
+      type: '機種変のときだけタイプ',
+      title: '1年以内に変えるなら\niCloudが断然お得。',
+      desc: 'もうすぐ買い替え予定なら、iCloud課金で今のiPhoneを乗り切るのが一番賢い選択。',
+      actions: ['今すぐiCloud課金（200GB・月450円）', 'iCloud写真をオンにしてWiFiでアップロード', '機種変後に新iPhoneでApple IDでログインするだけ', '忘れずに解約！'],
+      warning: '⚠️ 解約のし忘れに注意。機種変後すぐ解約の予定を立てておいて(ﾉ_ _)ﾉ'
+    },
+    need_icloud: {
+      emoji: '☁️',
+      type: 'iCloud必要タイプ',
+      title: '課金は正解。\n設定を確認して。',
+      desc: '写真を大切にしてて、パソコンもない。iCloudへの課金はあなたにとって正しい選択。ただし設定が正しくできてないと意味がない。',
+      actions: ['設定 → 写真 → iCloud写真がオンになってるか確認', '設定 → 写真 → iPhoneストレージを最適化もオンに', 'WiFiにつないで充電しながら、くるくるが消えるのを待つ'],
+      warning: '⚠️ 本体の空きが5GB以下になる前に動くこと！カツカツになるとアップロードできなくなる。'
+    },
+    consider: {
+      emoji: '🤔',
+      type: '買い替え検討タイプ',
+      title: '買い替えと\niCloudを比べてみて。',
+      desc: '長く使うほどiCloud代がかさむ。下の計算で、あなたの場合どちらがお得か確認してみて。',
+      actions: ['まずiCloud課金（200GB・月450円）で様子を見る', '次の機種変では大容量モデルを選ぶ', 'それまでのiCloud代は「延命費用」と割り切る'],
+      warning: null
+    },
+    need_2tb: {
+      emoji: '🗄️',
+      type: '大容量データ持ちタイプ',
+      title: 'iCloudは必須。\nまず何を溜めてるか確認しよう。',
+      desc: '',
+      actions: [],
+      warning: '⚠️ 月1,500円は年間18,000円。何が容量を使ってるか把握するだけで、節約の道が見えてくることが多い。'
+    }
+  };
+
+  let r = results[key];
+
+  if (key === 'need_2tb') {
+    const contentMap = {
+      photos: {
+        desc: '写真・動画がiCloudを圧迫している。特に動画は1本で数GB食うことも。でも実は気づかないうちにたまってる「いらないもの」を消すだけで大幅に減らせる場合が多い。',
+        actions: [
+          '【重複写真】写真アプリ → アルバム → 重複項目（iOS 16以降）で自動検出・削除',
+          '【スクショ】写真アプリ → アルバム → メディアタイプ → スクリーンショット を整理',
+          '【削除済み】写真アプリ → 最近削除した項目 → すべて削除（削除後30日間残り続ける！）',
+          '【Live Photos】カメラ設定でLive Photosをオフにすると容量が約半分になる',
+          '【動画解像度】設定 → カメラ → ビデオ撮影 を4Kから1080pに下げると容量が約1/3に',
+          '整理できたら200GBプランへのダウングレードを検討（年間12,600円節約）',
+        ]
+      },
+      backup: {
+        desc: '古いiPhoneのバックアップが眠っている可能性が高い。使っていないデバイスのバックアップは削除してOK。これだけで一気に容量が空くことがある。',
+        actions: [
+          '設定 → Apple ID → iCloud → ストレージを管理 → バックアップ を確認',
+          '使っていない古いデバイスのバックアップを削除',
+          '今使っているiPhoneのバックアップは1台分あればOK',
+          'バックアップ設定でアプリデータを個別に除外することもできる（使ってないアプリのデータは外してOK）',
+          '整理できたら200GBプランへのダウングレードを検討（年間12,600円節約）',
+        ]
+      },
+      files: {
+        desc: 'iCloud Driveに書類やファイルが溜まっている可能性が高い。書類はGoogleドライブなど他のサービスへ移行できるものも多く、iCloudへの依存を減らせる。',
+        actions: [
+          '設定 → Apple ID → iCloud → ストレージを管理 → iCloud Drive で容量確認',
+          '設定 → 一般 → iPhoneストレージ でアプリ別の使用量も確認できる',
+          '不要なファイルを削除、または他のストレージサービスへ移行',
+          'GmailやGoogleドライブはiCloudの代替として使える',
+          '整理できたら200GBプランへのダウングレードを検討（年間12,600円節約）',
+        ]
+      },
+      unknown: {
+        desc: '何が容量を使っているか把握するだけで、節約の糸口が見つかることが多い。まずは2か所確認から始めよう。',
+        actions: [
+          '設定 → Apple ID → iCloud → ストレージを管理 でiCloud側の内訳を確認',
+          '設定 → 一般 → iPhoneストレージ で本体側のアプリ別使用量を確認',
+          '【重複写真チェック】写真アプリ → アルバム → 重複項目（iOS 16以降）',
+          '【スクショ整理】写真アプリ → アルバム → メディアタイプ → スクリーンショット',
+          '200GBに落とせれば年間12,600円の節約になる',
+        ]
+      }
+    };
+    const content = contentMap[answers.storage_content] || contentMap.unknown;
+    r = { ...r, desc: content.desc, actions: content.actions };
+  }
+
+  const warningHTML = r.warning ? `<div class="warning-box"><strong>注意</strong>${r.warning}</div>` : '';
 
   area.innerHTML = `
     <div class="result-hero">
@@ -665,22 +825,17 @@ function showResult() {
       <div class="result-title">${r.title}</div>
       <div class="result-desc">${r.desc}</div>
     </div>
-
-    ${warningHtml}
-
+    ${buildCalcBox()}
+    ${warningHTML}
     <div class="result-section">
       <h3>やること</h3>
-      <ul>
-        ${r.actions.map(a => `<li>${a}</li>`).join('')}
-      </ul>
+      <ul>${r.actions.map(a => `<li>${a}</li>`).join('')}</ul>
     </div>
-
-    <button class="retry-btn" onclick="restart()">もう一度診断する</button>
-  `;
+    <button class="retry-btn" onclick="restart()">もう一度診断する</button>`;
 }
 
 function restart() {
-  answers = [];
+  answers = {};
   current = 0;
   document.getElementById('result-area').classList.add('hidden');
   document.getElementById('result-area').innerHTML = '';
